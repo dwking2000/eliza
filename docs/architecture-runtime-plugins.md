@@ -30,13 +30,13 @@ graph TB
     subgraph "Plugin Structure"
         Plugin[Plugin Interface<br/>─────────<br/>name: string<br/>description: string]
 
-        PluginActions[actions?: Action[]]
-        PluginProviders[providers?: Provider[]]
-        PluginEvaluators[evaluators?: Evaluator[]]
-        PluginServices[services?: Service[]]
-        PluginRoutes[routes?: Route[]]
+        PluginActions["actions?: Action array"]
+        PluginProviders["providers?: Provider array"]
+        PluginEvaluators["evaluators?: Evaluator array"]
+        PluginServices["services?: Service array"]
+        PluginRoutes["routes?: Route array"]
         PluginEvents[events?: PluginEvents]
-        PluginInit[init?: Function]
+        PluginInit["init?: Function"]
 
         Plugin --> PluginActions
         Plugin --> PluginProviders
