@@ -246,8 +246,8 @@ graph LR
     subgraph "Evaluator"
         EName[name: string]
         EDescription[description: string]
-        Similes[similes?: string[]]
-        AlwaysRun[alwaysRun?: boolean]
+        Similes["similes?: string array"]
+        AlwaysRun["alwaysRun?: boolean"]
         Examples[examples: Array]
         EValidate[validate Function]
         EHandler[handler Function]
