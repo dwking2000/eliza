@@ -155,7 +155,7 @@ await runtime.evaluate(message, state, didRespond);
 ```mermaid
 graph LR
     subgraph "Runtime Service Management"
-        Map[Services Map<br/>ServiceTypeName → Service[]]
+        Map["Services Map<br/>ServiceTypeName to Service Array"]
     end
 
     subgraph "Service Types"
@@ -164,7 +164,7 @@ graph LR
         Browser[BROWSER]
         Wallet[WALLET]
         Message[MESSAGE]
-        Custom[Custom Services via<br/>Module Augmentation]
+        Custom["Custom Services via<br/>Module Augmentation"]
     end
 
     Map --> Transcription
