@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "Eliza Desktop",
+  "productName": "ElizaOS",
   "version": "1.2.4",
-  "identifier": "com.elizaos.desktop",
+  "identifier": "ai.elizaos.app",
   "build": {
     "beforeDevCommand": "bun run dev",
     "devUrl": "http://localhost:1420",
@@ -12,23 +12,27 @@
   "app": {
     "windows": [
       {
-        "title": "Eliza Desktop",
+        "title": "ElizaOS",
         "width": 1200,
         "height": 800,
         "minWidth": 800,
-        "minHeight": 600
+        "minHeight": 600,
+        "fullscreen": false,
+        "resizable": true,
+        "visible": true
       }
     ],
     "security": {
       "csp": {
         "default-src": "'self'",
-        "img-src": "'self' data: asset: https://asset.localhost http://localhost:3000",
-        "connect-src": "'self' http://localhost:3000 ws://localhost:3000 http://localhost:* https://localhost:* capacitor://* tauri://* https://api.eliza.how",
-        "style-src": "'self' 'unsafe-inline' http://localhost:3000",
-        "script-src": "'self' 'unsafe-eval' http://localhost:3000",
-        "frame-src": "'self' http://localhost:3000"
+        "img-src": "'self' data: asset: https://asset.localhost http://localhost:* https://*",
+        "connect-src": "'self' http://localhost:* https://localhost:* ws://localhost:* wss://localhost:* http://* https://* ws://* wss://* capacitor://* tauri://* https://api.eliza.how",
+        "style-src": "'self' 'unsafe-inline' http://localhost:*",
+        "script-src": "'self' 'unsafe-eval' http://localhost:*",
+        "frame-src": "'self' http://localhost:* https://*"
       }
-    }
+    },
+    "withGlobalTauri": true
   },
   "bundle": {
     "active": true,
@@ -39,7 +43,19 @@
       "icons/128x128@2x.png",
       "icons/icon.icns",
       "icons/icon.ico"
-    ]
+    ],
+    "publisher": "ElizaOS",
+    "homepage": "https://elizaos.ai",
+    "category": "Productivity",
+    "shortDescription": "AI Agent Runtime Platform",
+    "longDescription": "ElizaOS is a powerful AI agent runtime platform that enables you to create, manage, and interact with autonomous AI agents across multiple platforms.",
+    "iOS": {
+      "minimumSystemVersion": "13.0",
+      "frameworks": []
+    },
+    "android": {
+      "minSdkVersion": 24
+    }
   },
   "plugins": {
     "shell": {

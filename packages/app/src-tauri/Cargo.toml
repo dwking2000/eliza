@@ -1,9 +1,10 @@
 [package]
-name = "app"
+name = "elizaos-app"
 version = "1.2.4"
-description = "A Tauri App"
-authors = ["you"]
+description = "ElizaOS - AI Agent Runtime Platform"
+authors = ["ElizaOS Team"]
 edition = "2021"
+license = "MIT"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -24,3 +25,11 @@ tauri = { version = "2.0.0", features = [] }
 tauri-plugin-opener = "2.0.0"
 tauri-plugin-shell = "2.2.1"
 once_cell = "1.19.0"
+
+# Mobile-specific dependencies
+[target.'cfg(target_os = "android")'.dependencies]
+jni = "0.21"
+
+[target.'cfg(target_os = "ios")'.dependencies]
+cocoa = "0.25"
+objc = "0.2"

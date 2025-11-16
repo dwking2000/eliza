@@ -1,0 +1,14 @@
+{
+  "$schema": "../gen/schemas/mobile-schema.json",
+  "identifier": "mobile",
+  "description": "Mobile-specific capabilities for ElizaOS app",
+  "windows": ["main"],
+  "permissions": [
+    "core:default",
+    "core:window:allow-create",
+    "core:window:allow-center",
+    "core:webview:allow-set-webview-zoom",
+    "opener:default"
+  ],
+  "platforms": ["iOS", "android"]
+}
