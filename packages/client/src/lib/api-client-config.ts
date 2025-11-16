@@ -1,11 +1,27 @@
 import { ElizaClient, type ApiClientConfig } from '@elizaos/api-client';
 
+// Detect if running in Tauri
+function isTauri(): boolean {
+  return '__TAURI__' in window || window.location.protocol === 'tauri:';
+}
+
+// Get the appropriate base URL for the API
+function getApiBaseUrl(): string {
+  // In Tauri, always use localhost:3000 for the Eliza server
+  if (isTauri()) {
+    return 'http://localhost:3000';
+  }
+
+  // In web mode, use the current origin (server + client on same host)
+  return window.location.origin;
+}
+
 export function createApiClientConfig(): ApiClientConfig {
   const getLocalStorageApiKey = () => `eliza-api-key-${window.location.origin}`;
   const apiKey = localStorage.getItem(getLocalStorageApiKey());
 
   const config: ApiClientConfig = {
-    baseUrl: window.location.origin,
+    baseUrl: getApiBaseUrl(),
     timeout: 30000,
     headers: {
       Accept: 'application/json',
