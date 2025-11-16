@@ -60,20 +60,6 @@
   "plugins": {
     "shell": {
       "open": true
-    },
-    "fs": {
-      "scope": ["$APP/**", "$DOWNLOAD/**", "$DOCUMENT/**"]
-    },
-    "dialog": {
-      "all": false,
-      "ask": false,
-      "confirm": false,
-      "message": false,
-      "open": true,
-      "save": true
-    },
-    "notification": {
-      "all": true
     }
   }
 }

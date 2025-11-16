@@ -50,12 +50,16 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.40.0",
+    "@tailwindcss/postcss": "^4.1.17",
     "@tauri-apps/cli": "^2.6.2",
     "@types/node": "^24.0.1",
     "@types/react": "^19.1.5",
     "@types/react-dom": "^19.1.6",
     "@vitejs/plugin-react": "^4.6.0",
+    "autoprefixer": "^10.4.22",
     "prettier": "3.5.3",
+    "tailwindcss": "^4.1.17",
+    "tailwindcss-animate": "^1.0.7",
     "typescript": "5.8.2",
     "vite": "^6.3.5"
   },

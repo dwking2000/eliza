@@ -32,9 +32,10 @@ export default defineConfig(async () => ({
   },
   resolve: {
     alias: {
-      // Point @ to client's src (all @/ imports come from client package)
+      // All @/ imports resolve to client package src (since app wraps client)
       '@': path.resolve(__dirname, '../client/src'),
       '@client': path.resolve(__dirname, '../client/src'),
+      '@app': path.resolve(__dirname, './src'),
       // Prevent node Sentry code from entering the browser bundle
       '@sentry/node': path.resolve(__dirname, './src/mocks/empty-module.ts'),
       '@sentry/node-core': path.resolve(__dirname, './src/mocks/empty-module.ts'),
