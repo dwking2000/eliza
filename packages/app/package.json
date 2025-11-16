@@ -28,11 +28,21 @@
   "dependencies": {
     "@elizaos/api-client": "workspace:*",
     "@elizaos/cli": "workspace:*",
+    "@elizaos/client": "workspace:*",
+    "@elizaos/core": "workspace:*",
     "@tauri-apps/api": "^2.6.0",
     "@tauri-apps/plugin-opener": "^2.4.0",
     "@tauri-apps/plugin-shell": "^2.3.0",
+    "@tauri-apps/plugin-notification": "^2.0.0",
+    "@tauri-apps/plugin-fs": "^2.0.0",
+    "@tauri-apps/plugin-dialog": "^2.0.0",
+    "@tanstack/react-query": "^5.67.2",
+    "buffer": "^6.0.3",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "react-router": "^7.3.0",
+    "react-router-dom": "^7.3.0",
+    "socket.io-client": "^4.8.1"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^2.6.2",

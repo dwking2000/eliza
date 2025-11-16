@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import path from 'node:path';
 
 // @ts-expect-error process is a nodejs global
 const host = process.env.TAURI_DEV_HOST;
@@ -26,7 +27,58 @@ export default defineConfig(async () => ({
       : undefined,
     watch: {
       // 3. tell vite to ignore watching `src-tauri`
-      ignored: ['**/src-tauri/**'],
+      ignored: ['**/src-tauri/**', '**/node_modules/**', '**/.git/**'],
     },
+  },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+      '@client': path.resolve(__dirname, '../client/src'),
+      // Prevent node Sentry code from entering the browser bundle
+      '@sentry/node': path.resolve(__dirname, './src/mocks/empty-module.ts'),
+      '@sentry/node-core': path.resolve(__dirname, './src/mocks/empty-module.ts'),
+    },
+    // Ensure a single React instance
+    dedupe: ['react', 'react-dom'],
+  },
+  optimizeDeps: {
+    esbuildOptions: {
+      define: {
+        global: 'globalThis',
+      },
+    },
+    include: ['buffer', 'process', '@elizaos/core', '@elizaos/api-client'],
+  },
+  build: {
+    target: 'esnext',
+    sourcemap: true,
+    minify: 'esbuild',
+    chunkSizeWarningLimit: 2200,
+    rollupOptions: {
+      output: {
+        manualChunks: (id) => {
+          if (id.includes('node_modules')) {
+            if (id.includes('react') || id.includes('react-dom') || id.includes('react-router')) {
+              return 'react-vendor';
+            }
+            if (id.includes('@radix-ui')) {
+              return 'ui-vendor';
+            }
+            if (id.includes('@elizaos')) {
+              return 'elizaos-vendor';
+            }
+            if (id.includes('@tauri-apps')) {
+              return 'tauri-vendor';
+            }
+          }
+        },
+      },
+    },
+  },
+  define: {
+    // Define globals for browser compatibility
+    'process.env': JSON.stringify({}),
+    'process.browser': true,
+    global: 'globalThis',
   },
 }));
