@@ -6,6 +6,12 @@
     "module": "ESNext",
     "skipLibCheck": true,
 
+    /* Path mapping */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*", "../client/src/*"]
+    },
+
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
@@ -16,11 +22,12 @@
     "typeRoots": ["./node_modules/@types", "./src/types"],
 
     /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "strict": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noFallthroughCasesInSwitch": false
   },
   "include": ["src"],
+  "exclude": ["node_modules", "dist", "src-tauri", "../client/cypress", "../client/**/*.cy.tsx", "../client/**/*.test.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

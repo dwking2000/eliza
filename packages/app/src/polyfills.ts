@@ -8,9 +8,10 @@ const g: any =
     ? globalThis
     : typeof window !== 'undefined'
       ? window
-      : // @ts-ignore
+      : // @ts-expect-error - global may not exist in browser
         typeof global !== 'undefined'
-        ? global
+        ? // @ts-expect-error - global is not defined in browser context
+          global
         : {};
 
 if (!g.Buffer) {
